@@ -289,8 +289,7 @@ return (
 {screen==="select" && <SelectScreen onStart={start} />}
 {screen==="countdown" && hole && <CountdownScreen hole={hole} onGo={() => setScreen("active")} />}
 {screen==="active" && hole && <ActiveScreen hole={hole} holeIndex={holeIdx} totalHoles={courseData.holes.length} onComplete={completeHole} />}
-{screen==="rest" && nextHole && <RestScreen restTime={restTime} nextHole={nextHole} onDone={() => setScreen("countdown")} />}
-{screen==="scorecard" && courseData && <ScorecardScreen course={courseData} results={results} restTime={restTime} onRestart={() => setScreen("select")} />}
+{screen==="rest" && nextHole && holeIdx < courseData.holes.length - 1 && <RestScreen restTime={restTime} nextHole={nextHole} onDone={() => setScreen("countdown")} />}{screen==="scorecard" && courseData && <ScorecardScreen course={courseData} results={results} restTime={restTime} onRestart={() => setScreen("select")} />}
 </div>
 );
 }
