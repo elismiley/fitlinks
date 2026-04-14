@@ -103,7 +103,6 @@ function SelectScreen({ onStart }) {
 const [sel, setSel] = useState("riverside");
 const [rest, setRest] = useState(90);
 const mod = 1 + ((rest - 90) / 90) * 0.2;
-
 return (
 <div style={{ padding:"1.5rem 1.25rem", maxWidth:500, margin:"0 auto" }}>
 <div style={{ textAlign:"center", marginBottom:"2rem" }}>
@@ -257,6 +256,29 @@ return (
 </div>
 ))}
 </div>
+<div style={{ marginBottom:"1.25rem" }}>
+<div style={{ fontSize:"0.58rem", letterSpacing:"0.18em", color:"#555", textTransform:"uppercase", marginBottom:"0.5rem" }}>Scorecard</div>
+<div style={{ display:"grid", gridTemplateColumns:"1.4rem 1fr 2.8rem 2.8rem 3rem", gap:"0.35rem", padding:"0.3rem 0.6rem", fontSize:"0.52rem", letterSpacing:"0.1em", color:"#3A3A3A", textTransform:"uppercase", borderBottom:"1px solid rgba(255,255,255,0.05)" }}>
+<span>#</span><span>Movement</span><span style={{textAlign:"center"}}>Par</span><span style={{textAlign:"center"}}>Time</span><span style={{textAlign:"center"}}>Score</span>
+</div>
+{course.holes.map((hole, i) => {
+const s = calcScore(results[i], hole.par, hole.type);
+return (
+<div key={hole.id} style={{ display:"grid", gridTemplateColumns:"1.4rem 1fr 2.8rem 2.8rem 3rem", gap:"0.35rem", padding:"0.5rem 0.6rem", borderBottom:"1px solid rgba(255,255,255,0.03)" }}>
+<span style={{ fontSize:"0.6rem", color:"#3A3A3A" }}>{hole.id}</span>
+<div>
+<div style={{ fontSize:"0.72rem", color:"#C0B8A8" }}>{hole.name}</div>
+<div style={{ fontSize:"0.55rem", color: CAT[hole.category].text }}>{CAT[hole.category].label}</div>
+</div>
+<span style={{ fontSize:"0.65rem", color:"#444", textAlign:"center" }}>{hole.par}s</span>
+<span style={{ fontSize:"0.65rem", color:"#AAA", textAlign:"center" }}>{results[i] != null ? `${results[i]}s` : "—"}</span>
+<span style={{ textAlign:"center" }}>
+<span style={{ fontSize:"0.72rem", fontWeight:700, color: scoreColor(s) }}>{fmtScore(s)}</span>
+</span>
+</div>
+);
+})}
+</div>
 <button onClick={onRestart} style={{ width:"100%", padding:"0.9rem", background:"transparent", border:"1px solid rgba(196,160,90,0.35)", color:"#C4A05A", fontSize:"0.8rem", fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", borderRadius:"4px", cursor:"pointer" }}>Play Another Round</button>
 </div>
 );
@@ -268,16 +290,32 @@ const [course, setCourse] = useState(null);
 const [restTime, setRestTime] = useState(90);
 const [holeIdx, setHoleIdx] = useState(0);
 const [results, setResults] = useState([]);
+
 const courseData = course ? COURSES[course] : null;
 const hole = courseData?.holes[holeIdx];
-const nextHole = courseData?.holes[holeIdx+1];
-function start(c, r) { setCourse(c); setRestTime(r); setHoleIdx(0); setResults([]); setScreen("countdown"); }
+const nextHole = courseData?.holes[holeIdx + 1];
+
+function start(c, r) {
+setCourse(c);
+setRestTime(r);
+setHoleIdx(0);
+setResults([]);
+setScreen("countdown");
+}
+
 function completeHole(time) {
 const newRes = [...results, time];
+const nextIdx = holeIdx + 1;
+if (nextIdx >= courseData.holes.length) {
 setResults(newRes);
-if (holeIdx+1 >= courseData.holes.length) { setScreen("scorecard"); }
-else { setHoleIdx(holeIdx+1); setScreen("rest"); }
+setScreen("scorecard");
+} else {
+setResults(newRes);
+setHoleIdx(nextIdx);
+setScreen("rest");
 }
+}
+
 return (
 <div style={{ minHeight:"100vh", background:"#0F0F0E", color:"#E8E0D0", fontFamily:"Georgia,serif" }}>
 <div style={{ borderBottom:"1px solid rgba(196,160,90,0.2)", padding:"0.9rem 1.25rem", display:"flex", alignItems:"center", justifyContent:"space-between", position:"sticky", top:0, background:"#0F0F0E", zIndex:10 }}>
@@ -289,7 +327,8 @@ return (
 {screen==="select" && <SelectScreen onStart={start} />}
 {screen==="countdown" && hole && <CountdownScreen hole={hole} onGo={() => setScreen("active")} />}
 {screen==="active" && hole && <ActiveScreen hole={hole} holeIndex={holeIdx} totalHoles={courseData.holes.length} onComplete={completeHole} />}
-{screen==="rest" && nextHole && holeIdx < courseData.holes.length - 1 && <RestScreen restTime={restTime} nextHole={nextHole} onDone={() => setScreen("countdown")} />}{screen==="scorecard" && courseData && <ScorecardScreen course={courseData} results={results} restTime={restTime} onRestart={() => setScreen("select")} />}
+{screen==="rest" && nextHole && <RestScreen restTime={restTime} nextHole={nextHole} onDone={() => setScreen("countdown")} />}
+{screen==="scorecard" && courseData && <ScorecardScreen course={courseData} results={results} restTime={restTime} onRestart={() => { setScreen("select"); setCourse(null); setHoleIdx(0); setResults([]); }} />}
 </div>
 );
 }
