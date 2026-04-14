@@ -304,16 +304,19 @@ setScreen("countdown");
 }
 
 function completeHole(time) {
-const newRes = [...results, time];
+setResults(prev => {
+const newRes = [...prev, time];
 const nextIdx = holeIdx + 1;
 if (nextIdx >= courseData.holes.length) {
-setResults(newRes);
-setScreen("scorecard");
+setTimeout(() => setScreen("scorecard"), 50);
 } else {
-setResults(newRes);
+setTimeout(() => {
 setHoleIdx(nextIdx);
 setScreen("rest");
+}, 50);
 }
+return newRes;
+});
 }
 
 return (
