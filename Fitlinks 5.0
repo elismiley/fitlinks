@@ -293,7 +293,6 @@ const [results, setResults] = useState([]);
 
 const courseData = course ? COURSES[course] : null;
 const hole = courseData?.holes[holeIdx];
-const nextHole = courseData?.holes[holeIdx + 1];
 
 function start(c, r) {
 setCourse(c);
@@ -330,7 +329,7 @@ return (
 {screen==="select" && <SelectScreen onStart={start} />}
 {screen==="countdown" && hole && <CountdownScreen hole={hole} onGo={() => setScreen("active")} />}
 {screen==="active" && hole && <ActiveScreen hole={hole} holeIndex={holeIdx} totalHoles={courseData.holes.length} onComplete={completeHole} />}
-{screen==="rest" && nextHole && <RestScreen restTime={restTime} nextHole={nextHole} onDone={() => setScreen("countdown")} />}
+{screen==="rest" && holeIdx > 0 && holeIdx < courseData.holes.length && courseData.holes[holeIdx] && <RestScreen restTime={restTime} nextHole={courseData.holes[holeIdx]} onDone={() => setScreen("countdown")} />}
 {screen==="scorecard" && courseData && <ScorecardScreen course={courseData} results={results} restTime={restTime} onRestart={() => { setScreen("select"); setCourse(null); setHoleIdx(0); setResults([]); }} />}
 </div>
 );
