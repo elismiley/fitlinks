@@ -321,6 +321,7 @@ setState(s => ({...s, screen:"rest", holeIdx:nextIdx, restNextHole:courseData.ho
 }
 
 async function saveRound() {
+try {
 const avgs = categoryAverages(courseData.holes, results);
 const sd = getFinalScore(avgs, restTime);
 await db.transact(
@@ -340,10 +341,12 @@ holeTimes: results,
 playedAt: Date.now(),
 })
 );
+alert("Round saved!");
 restart();
+} catch (e) {
+alert("Error: " + e.message);
 }
-
-function restart() {
+}function restart() {
 setState({ screen:"select", courseKey:null, restTime:75, holeIdx:0, restNextHole:null, results:[] });
 }
 
