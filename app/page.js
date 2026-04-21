@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import db, { id } from "../lib/db";
+import db from "../lib/db";
 import Auth from "./auth";
 
 const COURSES = {
