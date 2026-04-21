@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import db from "../lib/db";
+import db, { id } from "../lib/db";
 import Auth from "./auth";
 
 const COURSES = {
@@ -325,7 +325,7 @@ try {
 const avgs = categoryAverages(courseData.holes, results);
 const sd = getFinalScore(avgs, restTime);
 await db.transact(
-db.tx.rounds[db.id()].update({
+db.tx.rounds[id()].update({
 userId: user.id,
 courseKey,
 courseName: courseData.name,
