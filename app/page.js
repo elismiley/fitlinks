@@ -325,7 +325,7 @@ try {
 const avgs = categoryAverages(courseData.holes, results);
 const sd = getFinalScore(avgs, restTime);
 await db.transact(
-db.tx.rounds[id()].update({
+db.tx.rounds[crypto.randomUUID()].update({
 userId: user.id,
 courseKey,
 courseName: courseData.name,
