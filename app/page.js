@@ -7,22 +7,22 @@ const COURSES = {
 riverside: {
 name: "Riverside", club: "Atlanta Athletic Club", slope: 144,
 holes: [
-{ id: 1, name: "Push Up Shoulder Taps", reps: 20, category: "US", par: 60, type: "reps" },
+{ id: 1, name: "Hand Release Push Ups", reps: 25, category: "US", par: 62.5, type: "reps" },
 { id: 2, name: "Squat Reverse Lunges", reps: 15, category: "LS", par: 52.5, type: "reps" },
 { id: 3, name: "Sit Ups", reps: 30, category: "Core", par: 45, type: "reps" },
-{ id: 4, name: "Reverse Grip Pull Ups", reps: 8, category: "US", par: 16, type: "reps" },
+{ id: 4, name: "Reverse Grip Pull Ups", reps: 14, category: "US", par: 28, type: "reps" },
 { id: 5, name: "Jumping Lunges", reps: 20, category: "LS", par: 20, type: "reps" },
 { id: 6, name: ".25 Mile Run", reps: null, category: "Cardio", par: 110, type: "reps" },
-{ id: 7, name: "Reverse Grip Pull Ups", reps: 8, category: "US", par: 16, type: "reps" },
+{ id: 7, name: "Reverse Grip Pull Ups", reps: 14, category: "US", par: 28, type: "reps" },
 { id: 8, name: "Jumping Lunges", reps: 20, category: "LS", par: 20, type: "reps" },
 { id: 9, name: "Sit Ups", reps: 30, category: "Core", par: 45, type: "reps" },
-{ id: 10, name: "Push Up Shoulder Taps", reps: 20, category: "US", par: 60, type: "reps" },
+{ id: 10, name: "Hand Release Push Ups", reps: 25, category: "US", par: 62.5, type: "reps" },
 { id: 11, name: "Squat Reverse Lunges", reps: 15, category: "LS", par: 52.5, type: "reps" },
 { id: 12, name: ".25 Mile Run", reps: null, category: "Cardio", par: 110, type: "reps" },
-{ id: 13, name: "Push Up Shoulder Taps", reps: 20, category: "US", par: 60, type: "reps" },
+{ id: 13, name: "Hand Release Push Ups", reps: 25, category: "US", par: 62.5, type: "reps" },
 { id: 14, name: "Squat Reverse Lunges", reps: 15, category: "LS", par: 52.5, type: "reps" },
 { id: 15, name: "Plank Hold", reps: null, category: "Core", par: 120, type: "hold" },
-{ id: 16, name: "Reverse Grip Pull Ups", reps: 8, category: "US", par: 16, type: "reps" },
+{ id: 16, name: "Reverse Grip Pull Ups", reps: 14, category: "US", par: 28, type: "reps" },
 { id: 17, name: "Jumping Lunges", reps: 20, category: "LS", par: 20, type: "reps" },
 { id: 18, name: ".25 Mile Run", reps: null, category: "Cardio", par: 110, type: "reps" },
 ],
@@ -30,22 +30,22 @@ holes: [
 highlands: {
 name: "Highlands", club: "Atlanta Athletic Club", slope: 152,
 holes: [
-{ id: 1, name: "Push Up Shoulder Taps", reps: 25, category: "US", par: 75, type: "reps" },
+{ id: 1, name: "Hand Release Push Ups", reps: 30, category: "US", par: 75, type: "reps" },
 { id: 2, name: "Squat Reverse Lunges", reps: 20, category: "LS", par: 70, type: "reps" },
 { id: 3, name: "Sit Ups", reps: 30, category: "Core", par: 45, type: "reps" },
-{ id: 4, name: "Reverse Grip Pull Ups", reps: 10, category: "US", par: 20, type: "reps" },
+{ id: 4, name: "Reverse Grip Pull Ups", reps: 16, category: "US", par: 32, type: "reps" },
 { id: 5, name: "Jumping Lunges", reps: 25, category: "LS", par: 25, type: "reps" },
 { id: 6, name: ".25 Mile Run", reps: null, category: "Cardio", par: 110, type: "reps" },
-{ id: 7, name: "Reverse Grip Pull Ups", reps: 10, category: "US", par: 20, type: "reps" },
+{ id: 7, name: "Reverse Grip Pull Ups", reps: 16, category: "US", par: 32, type: "reps" },
 { id: 8, name: "Jumping Lunges", reps: 25, category: "LS", par: 25, type: "reps" },
 { id: 9, name: "Sit Ups", reps: 30, category: "Core", par: 45, type: "reps" },
-{ id: 10, name: "Push Up Shoulder Taps", reps: 25, category: "US", par: 75, type: "reps" },
+{ id: 10, name: "Hand Release Push Ups", reps: 30, category: "US", par: 75, type: "reps" },
 { id: 11, name: "Squat Reverse Lunges", reps: 20, category: "LS", par: 70, type: "reps" },
 { id: 12, name: ".25 Mile Run", reps: null, category: "Cardio", par: 110, type: "reps" },
-{ id: 13, name: "Push Up Shoulder Taps", reps: 25, category: "US", par: 75, type: "reps" },
+{ id: 13, name: "Hand Release Push Ups", reps: 30, category: "US", par: 75, type: "reps" },
 { id: 14, name: "Squat Reverse Lunges", reps: 20, category: "LS", par: 70, type: "reps" },
 { id: 15, name: "Sit Ups", reps: 30, category: "Core", par: 45, type: "reps" },
-{ id: 16, name: "Reverse Grip Pull Ups", reps: 10, category: "US", par: 20, type: "reps" },
+{ id: 16, name: "Reverse Grip Pull Ups", reps: 16, category: "US", par: 32, type: "reps" },
 { id: 17, name: "Jumping Lunges", reps: 25, category: "LS", par: 25, type: "reps" },
 { id: 18, name: ".25 Mile Run", reps: null, category: "Cardio", par: 110, type: "reps" },
 ],
@@ -126,6 +126,9 @@ return (
 </div>
 </div>
 <input type="range" min={30} max={150} step={5} value={rest} onChange={e=>setRest(Number(e.target.value))} style={{width:"100%",accentColor:"#C4A05A"}}/>
+<div style={{display:"flex",justifyContent:"space-between",fontSize:"0.55rem",color:"#3A3A3A",marginTop:"0.2rem"}}>
+<span>30s aggressive</span><span>75s par</span><span>150s easy</span>
+</div>
 </div>
 <button onClick={()=>onStart(sel,rest)} style={{width:"100%",padding:"1rem",background:"#C4A05A",border:"none",color:"#0F0F0E",fontSize:"0.85rem",fontWeight:700,letterSpacing:"0.15em",textTransform:"uppercase",borderRadius:"4px",cursor:"pointer"}}>
 Begin Round →
@@ -364,3 +367,4 @@ return (
 </div>
 );
 }
+
