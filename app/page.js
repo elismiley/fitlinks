@@ -1,4 +1,4 @@
-“use client”;
+"use client";
 import { useState, useEffect, useRef } from “react”;
 import db from “../lib/db”;
 import Auth from “./auth”;
