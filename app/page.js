@@ -100,7 +100,7 @@ return {mov, mod, final: mov*mod};
 }
 function calcIndex(rounds) {
 if (!rounds?.length) return null;
-const recent = […rounds].sort((a,b) => b.playedAt - a.playedAt).slice(0,10);
+const recent = [...rounds].sort((a,b) => b.playedAt - a.playedAt).slice(0,10);
 return recent.reduce((s,r) => s + r.movementAvg, 0) / recent.length;
 }
 function fmtDate(ts) {
@@ -131,10 +131,10 @@ flexShrink:0,
 // ── Sparkline ──────────────────────────────────────────────────────────────
 function Sparkline({ rounds }) {
 if (!rounds || rounds.length < 2) return null;
-const sorted = […rounds].sort((a,b)=>a.playedAt-b.playedAt);
+const sorted = [...rounds].sort((a,b)=>a.playedAt-b.playedAt);
 const scores = sorted.map(r=>r.finalScore);
-const min = Math.min(…scores)-0.5;
-const max = Math.max(…scores)+0.5;
+const min = Math.min(...scores)-0.5;
+const max = Math.max(...scores)+0.5;
 const range = max-min||1;
 const w=120; const h=40;
 const pts = scores.map((s,i) => `${(i/(scores.length-1))*w},${h-((s-min)/range)*h}`).join(" ");
@@ -346,7 +346,7 @@ return (
 })}
 </div>
 <button onClick={onSave} disabled={saving} style={{width:"100%",padding:"0.9rem",background:"#C4A05A",border:"none",color:"#0F0F0E",fontSize:"0.8rem",fontWeight:700,letterSpacing:"0.15em",textTransform:"uppercase",borderRadius:"4px",cursor:"pointer",marginBottom:"0.75rem",opacity:saving?0.7:1}}>
-{saving ? "Saving…" : "Save Round"}
+{saving ? "Saving..." : "Save Round"}
 </button>
 <button onClick={onRestart} style={{width:"100%",padding:"0.9rem",background:"transparent",border:"1px solid rgba(196,160,90,0.35)",color:"#C4A05A",fontSize:"0.8rem",fontWeight:700,letterSpacing:"0.15em",textTransform:"uppercase",borderRadius:"4px",cursor:"pointer"}}>Play Another Round</button>
 </div>
@@ -358,7 +358,7 @@ return (
 // ══════════════════════════════════════════════════════════════════════════
 function StatsPage({ rounds }) {
 const [activeTab, setActiveTab] = useState("overview");
-const sorted = […(rounds||[])].sort((a,b)=>b.playedAt-a.playedAt);
+const sorted = [...(rounds||[])].sort((a,b)=>b.playedAt-a.playedAt);
 const index = calcIndex(rounds);
 const totalRounds = rounds?.length || 0;
 const underPar = rounds?.filter(r=>r.finalScore<0).length || 0;
@@ -546,7 +546,7 @@ const MEMBERS = [
 { id:"3", name:"Jake M.", index:0.32, trend:"up", roundsPlayed:4, lastPlayed:3, active:true },
 { id:"4", name:"Chris T.", index:0.65, trend:"down", roundsPlayed:2, lastPlayed:5, active:true },
 { id:"5", name:"Will B.", index:1.20, trend:"up", roundsPlayed:1, lastPlayed:8, active:false },
-{ id:"6", name:"Invite…", index:null, roundsPlayed:0, active:false, pending:true },
+{ id:"6", name:"Invite...", index:null, roundsPlayed:0, active:false, pending:true },
 ];
 const CHALLENGES = [
 { id:"1", course:"Riverside", slope:144, status:"active", deadline:Date.now()+172800000, issuedBy:"You",
@@ -772,7 +772,7 @@ const hole = courseData?.holes[holeIdx];
 
 if (isLoading) return (
 <div style={{minHeight:"100vh",background:"#0F0F0E",display:"flex",alignItems:"center",justifyContent:"center",color:"#C4A05A",fontFamily:"Georgia,serif",fontSize:"0.8rem",letterSpacing:"0.2em",textTransform:"uppercase"}}>
-Loading…
+Loading...
 </div>
 );
 if (!user) return <Auth />;
@@ -783,19 +783,19 @@ setPage("play");
 }
 
 function completeHole(time) {
-const newResults = […results, time];
+const newResults = [...results, time];
 const nextIdx = holeIdx + 1;
 const isLast = nextIdx >= courseData.holes.length;
 if (isLast) {
-setGameState(s => ({…s, screen:"scorecard", results:newResults}));
+setGameState(s => ({...s, screen:"scorecard", results:newResults}));
 } else {
-setGameState(s => ({…s, screen:"rest", holeIdx:nextIdx, restNextHole:courseData.holes[nextIdx], results:newResults}));
+setGameState(s => ({...s, screen:"rest", holeIdx:nextIdx, restNextHole:courseData.holes[nextIdx], results:newResults}));
 }
 }
 
 async function saveRound() {
 try {
-setGameState(s => ({…s, saving:true}));
+setGameState(s => ({...s, saving:true}));
 const avgs = categoryAverages(courseData.holes, results);
 const sd = getFinalScore(avgs, restTime);
 await db.transact(
@@ -819,7 +819,7 @@ restart();
 setPage("stats");
 } catch (e) {
 alert("Error saving: " + e.message);
-setGameState(s => ({…s, saving:false}));
+setGameState(s => ({...s, saving:false}));
 }
 }
 
