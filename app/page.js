@@ -859,7 +859,6 @@ return (
 {/* Bottom Nav — hide during active workout */}
 {!isInRound && <BottomNav activePage={page} onNavigate={setPage}/>}
 </div>
-```
 
 );
 }
