@@ -405,7 +405,7 @@ trending!==null?{label:"Trend",value:trending?"↓ Improving":"↑ Declining",co
 </div>
 </div>
 
-```
+
 {/* Tabs */}
 <div style={{display:"flex",marginBottom:"1.25rem",borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
 {["overview","history","categories"].map(tab=>(
@@ -587,7 +587,7 @@ return (
 </div>
 </div>
 
-```
+
 {/* Tabs */}
 <div style={{display:"flex",marginBottom:"1.25rem",borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
 {["leaderboard","challenges","club"].map(tab=>(
@@ -842,7 +842,7 @@ return (
 </div>
 </div>
 
-```
+
 {/* Pages */}
 {page==="play" && (
 <>
