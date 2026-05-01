@@ -829,7 +829,7 @@ export default function Home() {
     </div>
   );
   if (!user) return <Auth />;
-  if (myProfile && !hasClub) return <ClubOnboarding user={user} onDone={() => {}} />;
+  if (myProfile && !hasClub) return <ClubOnboarding user={user} onDone={() => window.location.reload()} />;
 
   function start(key, rest) {
     setGameState({ screen:"countdown", courseKey:key, restTime:rest, holeIdx:0, restNextHole:null, results:[], saving:false });
